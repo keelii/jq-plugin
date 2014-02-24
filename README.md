@@ -1,4 +1,4 @@
 jq-plugin
 =========
 
-jQuery plugins
+jQuery plugins Copyright © JD.COM
