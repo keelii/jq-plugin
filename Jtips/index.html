@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Jtips</title>
+    <link rel="stylesheet" type="text/css" href="http://misc.360buyimg.com/lib/skin/2013/base.css" />
+    <style type="text/css">
+        body { padding:100px; }
+        .tips-demo { overflow:hidden; padding:50px; }
+    </style>
+</head>
+<body>
+    <div class="tips-demo">
+        <a id="tips" href="#none" title="标签的 title 属性会默认成 Tips 内容" class="Jtips">这是个普通链接</a>
+    </div>
+
+    <div class="tips-demo">
+        <a id="tips1" href="#none" title="设置了显示位置 bottom" class="Jtips">这是个普通链接</a>
+    </div>
+
+    <div class="tips-demo">
+        <a id="tips2" href="#none" title="设置了显示位置 left" class="Jtips">这是个普通链接</a>
+    </div>
+
+    <div class="tips-demo">
+        <a id="tips3" href="#none" title="设置了显示位置 right 且有关闭按钮" class="Jtips">这是个普通链接</a>
+    </div>
+
+    <script type="text/javascript" src="http://misc.360buyimg.com/lib/js/e/jquery-1.2.6.pack.js"></script>
+    <script src="jQuery.Jtips.js" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8">
+    $(function() {
+        $('#tips').Jtips({});
+
+        $('#tips1').Jtips({
+            position: 'bottom'
+        });
+
+        $('#tips2').Jtips({
+            position: 'left'
+        });
+
+        $('#tips3').Jtips({
+            position: 'right',
+            close: true
+        });    
+    });
+    </script>
+</body>
+</html>

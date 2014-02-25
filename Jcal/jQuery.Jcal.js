@@ -330,7 +330,6 @@
     };
 
     $.fn.Jcal = function (options, callback) {
-
         return this.each(function () {
             // 实例化插件对象
             var plugin = new Jcal(this, options, callback);
@@ -341,13 +340,3 @@
 }(jQuery));
 
 
-$(function() {
-    $('#cal').Jcal({
-        id: 'WTF',
-        weekName: ['日', '一', '二', '三', '四', '五', '六'], 
-        xx: 1,
-        close: true
-    }, function() {
-        console.log(this.current);
-    });
-});

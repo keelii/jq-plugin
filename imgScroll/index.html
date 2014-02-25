@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>imgScroll</title>
+    <link rel="stylesheet" type="text/css" href="http://misc.360buyimg.com/lib/skin/2013/base.css" />
+    <style type="text/css">
+        body { padding:50px; }
+        fieldset { padding:20px; margin-right:20px; margin-bottom:20px; }
+
+        span { display:inline-block; padding:10px 30px; margin-right:10px; background:#000; color:#fff }
+        span.disabled,span.xxoo { background:#eee; color:#000; }
+        img { border:1px solid #000; padding:3px; }
+
+        .s-controls { padding:20px 0; }
+
+        .status-wrap { padding:10px 0; }
+        .scroll-nav-wrap em { display:inline-block; width:20px; height:20px; border-radius:10px; line-height:20px; text-align:center; background:#000; color:#fff; margin-right:10px; }
+        .scroll-nav-wrap .current { background:#ccc; }
+    </style>
+</head>
+<body>
+
+<fieldset>
+    <legend>水平：不循环</legend>
+    <div class="inner">
+        <div id="scroll">
+            <ul>
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/g1/M04/04/13/rBEGDk-qT0oIAAAAAAGaCz96vdEAAA5ywLUFBQAAZoj706.jpg" width="50" height="50">
+                </li>
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/g1/M04/04/13/rBEGDk-qT0oIAAAAAAGaCz96vdEAAA5ywLUFBQAAZoj706.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3119/14be8ce2-1056-40aa-8c24-549914c5f419.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/2683/82ad119b-4979-49f9-aa8b-a1a88db02d35.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3659/458ca175-936b-4a79-b363-d05dcee2ef7f.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/4635/07dd5fc4-b337-4183-9982-13c5ff9de4a6.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/611/e7bfc695-a03f-49ce-a2ca-5c0761c35c7b.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3381/642758b4-cd79-4475-ab25-86b3ba6ebe99.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/2127/830d760b-5306-4bdb-ae0f-7ec0038ab903.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3103/a735cda1-d96c-4f9f-a370-97e05c2085c7.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/873/90bfdafe-08af-462e-917b-ee0941e179d3.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/1849/63b211c7-692b-41da-a72c-4b52da103c71.jpg" width="50" height="50">
+                </li>
+            
+              
+            </ul>
+        </div>
+        <div class="s-controls">
+            <span id="prev">&lt;</span>
+            <span id="next">&gt;</span>
+        </div>
+    </div> 
+</fieldset>
+                    
+<fieldset>
+    <legend>水平：循环</legend>
+    <div class="inner">
+        <div id="scroll1">
+            <ul>
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/g1/M04/04/13/rBEGDk-qT0oIAAAAAAGaCz96vdEAAA5ywLUFBQAAZoj706.jpg" width="50" height="50">
+                </li>
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/g1/M04/04/13/rBEGDk-qT0oIAAAAAAGaCz96vdEAAA5ywLUFBQAAZoj706.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3119/14be8ce2-1056-40aa-8c24-549914c5f419.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/2683/82ad119b-4979-49f9-aa8b-a1a88db02d35.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3659/458ca175-936b-4a79-b363-d05dcee2ef7f.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/4635/07dd5fc4-b337-4183-9982-13c5ff9de4a6.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/611/e7bfc695-a03f-49ce-a2ca-5c0761c35c7b.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3381/642758b4-cd79-4475-ab25-86b3ba6ebe99.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/2127/830d760b-5306-4bdb-ae0f-7ec0038ab903.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3103/a735cda1-d96c-4f9f-a370-97e05c2085c7.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/873/90bfdafe-08af-462e-917b-ee0941e179d3.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/1849/63b211c7-692b-41da-a72c-4b52da103c71.jpg" width="50" height="50">
+                </li>
+            
+              
+            </ul>
+        </div>
+        <div class="s-controls">
+            <span id="prev1">&lt;</span>
+            <span id="next1">&gt;</span>
+        </div>
+    </div> 
+</fieldset>
+<fieldset>
+    <legend>垂直：循环</legend>
+    <div class="inner">
+        <div id="scroll2">
+            <ul>
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/g1/M04/04/13/rBEGDk-qT0oIAAAAAAGaCz96vdEAAA5ywLUFBQAAZoj706.jpg" width="50" height="50">
+                </li>
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/g1/M04/04/13/rBEGDk-qT0oIAAAAAAGaCz96vdEAAA5ywLUFBQAAZoj706.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3119/14be8ce2-1056-40aa-8c24-549914c5f419.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/2683/82ad119b-4979-49f9-aa8b-a1a88db02d35.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3659/458ca175-936b-4a79-b363-d05dcee2ef7f.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/4635/07dd5fc4-b337-4183-9982-13c5ff9de4a6.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/611/e7bfc695-a03f-49ce-a2ca-5c0761c35c7b.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3381/642758b4-cd79-4475-ab25-86b3ba6ebe99.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/2127/830d760b-5306-4bdb-ae0f-7ec0038ab903.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3103/a735cda1-d96c-4f9f-a370-97e05c2085c7.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/873/90bfdafe-08af-462e-917b-ee0941e179d3.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/1849/63b211c7-692b-41da-a72c-4b52da103c71.jpg" width="50" height="50">
+                </li>
+            
+              
+            </ul>
+        </div>
+        <div class="s-controls">
+            <span id="prev2">&lt;</span>
+            <span id="next2">&gt;</span>
+        </div>
+    </div> 
+</fieldset>    
+<fieldset>
+    <legend>带状态提示、分页</legend>
+    <div class="inner">
+        <div id="scroll3">
+            <ul>
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/g1/M04/04/13/rBEGDk-qT0oIAAAAAAGaCz96vdEAAA5ywLUFBQAAZoj706.jpg" width="50" height="50">
+                </li>
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/g1/M04/04/13/rBEGDk-qT0oIAAAAAAGaCz96vdEAAA5ywLUFBQAAZoj706.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3119/14be8ce2-1056-40aa-8c24-549914c5f419.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/2683/82ad119b-4979-49f9-aa8b-a1a88db02d35.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3659/458ca175-936b-4a79-b363-d05dcee2ef7f.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/4635/07dd5fc4-b337-4183-9982-13c5ff9de4a6.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/611/e7bfc695-a03f-49ce-a2ca-5c0761c35c7b.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3381/642758b4-cd79-4475-ab25-86b3ba6ebe99.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/2127/830d760b-5306-4bdb-ae0f-7ec0038ab903.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/3103/a735cda1-d96c-4f9f-a370-97e05c2085c7.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/873/90bfdafe-08af-462e-917b-ee0941e179d3.jpg" width="50" height="50">
+                </li>
+            
+                <li>
+                    <img src="http://img11.360buyimg.com/n5/1849/63b211c7-692b-41da-a72c-4b52da103c71.jpg" width="50" height="50">
+                </li>
+            
+              
+            </ul>
+        </div>
+        <div class="s-controls">
+            <span id="prev3">&lt;</span>
+            <span id="next3">&gt;</span>
+        </div>
+    </div> 
+</fieldset>    
+
+<script type="text/javascript" src="http://misc.360buyimg.com/lib/js/e/jquery-1.2.6.pack.js"></script>
+<script src="jQuery.imgScroll.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8">
+$(function() {
+    $('#scroll').imgScroll({
+        visible: 5,
+        speed: 300,
+        step: 1,
+        showNavItem: true,
+        //status: true,
+        //statusWrapSelector: '.s-wrap',
+        loop: false,
+        next: '#next',
+        prev: '#prev'
+    });
+    $('#scroll1').imgScroll({
+        visible: 5,
+        speed: 300,
+        step: 1,
+        loop: true,
+        next: '#next1',
+        prev: '#prev1'
+    });
+    $('#scroll2').imgScroll({
+        visible: 3,
+        speed: 300,
+        step: 1,
+        direction: 'y',
+        loop: true,
+        next: '#next2',
+        prev: '#prev2'
+    });
+    $('#scroll3').imgScroll({
+        visible: 5,
+        speed: 300,
+        step: 1,
+        navItems: true,
+        
+        status: true,
+        statusWrapSelector: '.status-wrap',
+        
+        loop: false,
+        next: '#next3',
+        prev: '#prev3'
+    }); 
+});
+</script>
+</body>
+</html>
