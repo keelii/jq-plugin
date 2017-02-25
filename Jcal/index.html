@@ -2,65 +2,81 @@
 <head>
     <meta charset="utf-8">
     <title> test </title>
-    <link rel="stylesheet" type="text/css" href="http://misc.360buyimg.com/lib/skin/2013/base.css" />
-    
+
+    <link href="https://cdn.bootcss.com/jasmine/2.5.2/jasmine.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jasmine/2.5.2/jasmine.min.js"></script>
+    <script src="https://cdn.bootcss.com/jasmine/2.5.2/jasmine-html.min.js"></script>
+    <script src="https://cdn.bootcss.com/jasmine/2.5.2/boot.min.js"></script>
+
     <style type="text/css">
-    .box { border:1px solid #ddd; padding:20px; margin:100px; }
-    .J-cal { background:#fff; padding:10px; box-shadow:0 0 10px rgba(0,0,0,.12);}
-    .J-cal .J-cal-body span,
-    .J-cal .J-cal-weeks span {
-        width:30px;
-        height:30px;
-        line-height:30px;
-        text-align:center;
-        display:inline-block;
-        *zoom:1;
-    }
-    .J-cal .J-cal-switch {
-        width:20px;
-        height:20px;
-        line-height:20px;
-        text-align:center;
-        display:inline-block;
-        *zoom:1;
-        cursor:pointer;
-    }
+        .box { border:1px solid #ddd; padding:20px; margin:100px; }
+        .J-cal {
+            font: 12px arial;
+            background:#fff;
+            padding:10px;
+            box-shadow:0 0 10px rgba(0,0,0,.12);
+        }
+        .J-cal ul,.J-cal li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .J-cal .J-cal-body span,
+        .J-cal .J-cal-weeks span {
+            width:30px;
+            height:30px;
+            line-height:30px;
+            text-align:center;
+            display:inline-block;
+            *zoom:1;
+        }
+        .J-cal .J-cal-switch {
+            width:20px;
+            height:20px;
+            line-height:20px;
+            text-align:center;
+            display:inline-block;
+            *zoom:1;
+            cursor:pointer;
+        }
 
-    .J-cal .J-cal-weeks span {
-        border:1px solid #fff;
-    }
-    .J-cal .J-cal-body span {
-        border:1px solid #eee;
-    }
-    .J-cal .J-cal-body span:hover {
-        background:#eee;
-        cursor:pointer;
-    }
-    .J-cal .J-cal-switch {
-        background:#eee;
-    }
-    .J-cal .J-cal-week3 {
-        //background:#f1f1f1;
-    }
-    .J-cal .J-cal-hover {
-        background:#eee;
-        color:#fff;
-    }
-    .J-cal-active {
-        background:#fc0;
+        .J-cal .J-prev-month-date,
+        .J-cal .J-next-month-date {
+            color: #999;
+        }
+        .J-cal .J-cal-weeks span {
+            border:1px solid #fff;
+        }
+        .J-cal .J-cal-body span {
+            border:1px solid #eee;
+        }
+        .J-cal .J-cal-body span:hover {
+            background:#eee;
+            cursor:pointer;
+        }
+        .J-cal .J-cal-switch {
+            background:#eee;
+        }
+        .J-cal .J-cal-hover {
+            background:#eee;
+            color:#fff;
+        }
+        .J-cal .J-cal-body .J-cal-active,
+        .J-cal .J-cal-body .J-cal-active:hover {
+            background:#fc0;
+            border-color:#fc0;
+        }
 
-    }
-    .J-footer span {
-        display:block;
-        padding:4px 0;
-        text-align:center;
-    }
-    .J-footer span:hover {
-        background:#eee;
-        cursor:pointer;
-    }
+        .J-footer span {
+            display:block;
+            padding:4px 0;
+            text-align:center;
+        }
+        .J-footer span:hover {
+            background:#eee;
+            cursor:pointer;
+        }
     </style>
-
 </head>
 <body>
     <script type="text/javascript" src="http://misc.360buyimg.com/lib/js/2012/base-v1.js"></script>
@@ -73,19 +89,60 @@
         <input type="text" id="cal" />
     </div>
 
-    <script type="text/javascript" src="http://misc.360buyimg.com/lib/js/e/jquery-1.2.6.pack.js"></script>
-    <script src="jQuery.Jcal.js" type="text/javascript"></script>
-    <script type="text/javascript" charset="utf-8">
+    <script src="http://misc.360buyimg.com/lib/js/e/jquery-1.2.6.pack.js"></script>
+    <script src="jQuery.Jcal.js"></script>
+    <script charset="utf-8">
         $(function() {
             $('#cal').Jcal({
                 id: 'WTF',
-                weekName: ['日', '一', '二', '三', '四', '五', '六'], 
-                xx: 1,
                 close: true
-            }, function() {
-                console.log(this.current);
             });
         });
+    </script>
+    <script>
+        var $cal = $('#cal');
+        function getDateVal() {
+            return $cal.val();
+        }
+        function getInputDate(sep) {
+            sep = sep || '-'
+            return getDateVal().split(sep)
+        }
+        function getWeekName() {
+            return $('.J-cal-active').attr('data-week')
+        }
+
+        // test cases
+        describe("日期正确性", function() {
+            it("应该展示正常的日期", function() {
+                $cal.Jcal({ id: 'WTF', curr: new Date('2/15/2017') });
+                expect(getDateVal()).toBe('2017-2-15');
+            });
+            it("应该展示正确的星期数", function() {
+                $cal.Jcal({ id: 'WTF', curr: new Date('12/1/2016') });
+                expect(getWeekName()).toBe('4');
+            });
+            it("应该展示正确的闰年日期", function() {
+                $cal.Jcal({ id: 'WTF', curr: new Date('2/29/2020') });
+                expect(getDateVal()).toBe('2020-2-29');
+                expect(getWeekName()).toBe('6');
+            });
+            it("选择上月是闰2月29日期", function() {
+                $cal.Jcal({ id: 'WTF', curr: new Date('3/31/2024') });
+
+                expect(getDateVal()).toBe('2024-3-31');
+                expect(getWeekName()).toBe('0');
+
+                var instance = $cal.data('Jcal');
+                instance.cal
+                .find('.J-cal-body li').eq(0)
+                .find('span').eq(4)[0].click();
+
+                expect(getDateVal()).toBe('2024-2-29');
+                expect(getWeekName()).toBe('4');
+            });
+        });
+
     </script>
 </body>
 
