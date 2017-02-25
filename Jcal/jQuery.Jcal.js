@@ -1,3 +1,7 @@
+/**
+ * Another jQuery calendar plugin
+ * with dead tiny (3.3KB|minified & Gzip) file size
+ */
 (function($) {
     'use strict'
     /**
@@ -9,7 +13,6 @@
      */
     function Jcal(that, options, callback) {
         this.opts = $.extend({
-            options: 'options you want to set',
             id: 'J-calendar',
             start: '1995-5-1',      // The time JavaScript born
             end: '2043-5-1',        // Last day
@@ -204,10 +207,10 @@
             this.cal.hide()
         },
         markSelected: function() {
-            var year = this.current.year
+            var year  = this.current.year
             var month = this.current.month
             var hYear = this.highLight.year
-            var hMonth = this.highLight.month
+            var hMonth= this.highLight.month
             var hDate = this.highLight.date
 
             this.cal.find('[data-date]')
@@ -302,16 +305,21 @@
 
             // 年、月开始结束范围
             this.yearHead = start.year
-            this.monthHead = start.month
+            this.monthHead= start.month
             this.yearTail = end.year
-            this.monthTail = end.month
+            this.monthTail= end.month
 
+            var yearOptions = ''
             for (var i = start.year; i <= end.year; i++) {
-                selectYear.append('<option value="'+ i +'">'+ i +'</option>')
+                yearOptions += '<option value="'+ i +'">'+ i +'</option>'
             }
+            var monthOptions = ''
             for (var k = 1; k < 13; k++) {
-                selectMonth.append('<option value="'+ k +'">'+ k +'</option>')
+                monthOptions += '<option value="'+ k +'">'+ k +'</option>'
             }
+
+            selectYear.html(yearOptions)
+            selectMonth.html(monthOptions)
 
             selectYear.val(fullDate.year)
             selectMonth.val(fullDate.month)
