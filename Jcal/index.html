@@ -89,16 +89,8 @@
         <input type="text" id="cal" />
     </div>
 
-    <script src="http://misc.360buyimg.com/lib/js/e/jquery-1.2.6.pack.js"></script>
+    <script src="http://misc.360buyimg.com/??jdf/lib/jquery-1.6.4.js"></script>
     <script src="jQuery.Jcal.js"></script>
-    <script charset="utf-8">
-        $(function() {
-            $('#cal').Jcal({
-                id: 'WTF',
-                close: true
-            });
-        });
-    </script>
     <script>
         var $cal = $('#cal');
         function getDateVal() {
@@ -114,6 +106,9 @@
 
         // test cases
         describe("日期正确性", function() {
+            beforeEach(function() {
+                $cal.val('')
+            });
             it("应该展示正常的日期", function() {
                 $cal.Jcal({ id: 'WTF', curr: new Date('2/15/2017') });
                 expect(getDateVal()).toBe('2017-2-15');

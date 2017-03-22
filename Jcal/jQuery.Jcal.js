@@ -14,8 +14,10 @@
     function Jcal(that, options, callback) {
         this.opts = $.extend({
             id: 'J-calendar',
-            start: '1995-5-1',      // The time JavaScript born
-            end: '2043-5-1',        // Last day
+            // The time JavaScript born
+            start: '1995-5-1',
+            // Last day
+            end: '2043-5-1',
             outputFormat: '{Y}-{M}-{D}',
             weekName: ['日', '一', '二', '三', '四', '五', '六'],
             today: true,
@@ -23,10 +25,13 @@
             currentDay: 'J-cal-active',
             close: false,
             curr: new Date(),
+            zIndex: 10,
+            onSelected: $.noop,
+            onChanged: $.noop,
+            onReady: $.noop
         }, options)
 
         this.$el = $(that)
-        this.callback = callback || function() {}
 
         this.init()
     }
@@ -41,11 +46,12 @@
             this.switcher  = this.cal.find('.J-cal-switch')
             this.close     = this.cal.find('.J-cal-close')
 
-            this.current = this.formatDate(this.opts.curr)
+            this.current = this.formatDate(this.$el.val() || this.opts.curr)
             // cache selected
             this.highLight = this.formatDate(this.opts.curr)
 
-            this.initStyle()
+            this.styleInited = false;
+
             this.setSelect(this.current)
             this.renderWeek(this.current)
             this.renderDate()
@@ -54,6 +60,8 @@
             if (this.opts.close) {
                 this.close.show()
             }
+
+            this.opts.onReady.call(this)
         },
         /**
          * Render container html
@@ -91,10 +99,14 @@
             var h    = el.outerHeight()
             var oLeft= el.offset().left
             var oTop = el.offset().top
+
+            this.styleInited = true;
+
             this.cal.css({
                 position: 'absolute',
                 top: oTop + h,
-                left: oLeft
+                left: oLeft,
+                zIndex: this.opts.zIndex
             })
         },
         /**
@@ -109,7 +121,7 @@
 
             if (typeof fullDate === 'string') {
                 if(!dateRe.test(fullDate)) {
-                    throw new Error('Illegal date string :`' + currTimeString + '`.')
+                    throw new Error('Illegal date string :`' + fullDate + '`.')
                 } else {
                     dateArr = fullDate.split('-')
                     now = new Date(dateArr[0], parseInt(dateArr[1]) - 1, dateArr[2])
@@ -200,6 +212,7 @@
             })
         },
         show: function() {
+            if (!this.styleInited) this.initStyle();
             this.cal.show()
             this.markSelected()
         },
@@ -232,10 +245,7 @@
                 .replace('{D}', this.current.date))
             this.highLight = $.extend(true, {}, this.current)
 
-            if (this.callback) {
-                this.callback.apply(this)
-            }
-
+            this.opts.onSelected.call(this, this.current)
             this.hide()
         },
         prevYear: function() {
@@ -400,6 +410,7 @@
             this.fillPrevMonthDate(date, dateCount)
             this.fillNextMonthDate(date, dateCount)
             this.markSelected()
+            this.opts.onChanged.call(this, d)
         },
         fillPrevMonthDate: function(d) {
             var days = d.firstDay
