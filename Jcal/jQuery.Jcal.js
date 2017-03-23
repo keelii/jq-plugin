@@ -24,7 +24,7 @@
             hoverClass: 'J-cal-hover',
             currentDay: 'J-cal-active',
             close: false,
-            curr: new Date(),
+            curr: null,
             zIndex: 10,
             onSelected: $.noop,
             onChanged: $.noop,
@@ -53,6 +53,7 @@
             this.styleInited = false;
 
             this.setSelect(this.current)
+
             this.renderWeek(this.current)
             this.renderDate()
             this.bindEvent()
@@ -118,6 +119,8 @@
             var dateRe = /\d{4}-\d{1,2}-\d{1,2}/
             var dateArr
             var now
+
+            if (!fullDate) return {}
 
             if (typeof fullDate === 'string') {
                 if(!dateRe.test(fullDate)) {
@@ -333,7 +336,10 @@
 
             selectYear.val(fullDate.year)
             selectMonth.val(fullDate.month)
-            this.$el.val(this.current.year + '-' + this.current.month + '-' + this.current.date)
+
+            if (this.opts.curr) {
+                this.$el.val(this.current.year + '-' + this.current.month + '-' + this.current.date)
+            }
         },
         isLeapYear: function(year) {
             return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)
